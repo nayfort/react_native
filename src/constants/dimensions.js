@@ -1,0 +1,2 @@
+export const CHANGE_WIDTH_HEIGHT = 'CHANGE_WIDTH_HEIGHT';
+export default CHANGE_WIDTH_HEIGHT;

@@ -1,8 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import React from 'react';
 import store from './src/store';
 import { Asset } from 'expo-asset';
+import AppNavigator from './src/router';
+import { StyleSheet } from 'react-native-web';
 
 
 export default function App() {
@@ -10,10 +12,7 @@ export default function App() {
   return (
 
     <React.StrictMode store={store}>
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+        <AppNavigator/>
     </React.StrictMode>
     
   );

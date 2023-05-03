@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
-import PropTypes from 'prop-types';
+import RNPropTypes from 'deprecated-react-native-prop-types';
+import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 import {
   View,
@@ -29,7 +30,7 @@ import {
   RepeatIcon,
   LikeIcon,
 } from '../components/Icons';
-import { showInterstitialAd } from '../components/AdMob';
+//import { showInterstitialAd } from '../components/AdMob';
 import Animation from '../components/Animation';
 import KnotsSprites from '../assets/knots';
 import types from '../assets/categories';
@@ -109,7 +110,7 @@ class Knot extends React.PureComponent {
   handleBackEvent = async () => {
     const { navigation } = this.props;
     goBackSafe(navigation);
-    await showInterstitialAd();
+    // await showInterstitialAd();
 
     return true;
   };
@@ -490,17 +491,17 @@ const styles = StyleSheet.create({
 });
 
 Knot.propTypes = {
-  knot: knotPropType.isRequired,
+  knot: knotPropType,
   navigation: PropTypes.shape({
-    navigate: PropTypes.func.isRequired,
-    setParams: PropTypes.func.isRequired,
-    goBack: PropTypes.func,
-  }).isRequired,
-  like: PropTypes.func.isRequired,
-  langCode: PropTypes.string.isRequired,
-  isPortrait: PropTypes.bool.isRequired,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
+    navigate: RNPropTypes.func,
+    setParams: RNPropTypes.func,
+    goBack: RNPropTypes.func,
+  }),
+  like: RNPropTypes.func,
+  langCode: RNPropTypes.string,
+  isPortrait: RNPropTypes.bool,
+  width: RNPropTypes.number,
+  height: RNPropTypes.number,
 };
 
 const mapStateToProps = ({

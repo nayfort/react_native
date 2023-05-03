@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import RNPropTypes from 'deprecated-react-native-prop-types';
+import PropTypes from "prop-types";
 import {
   ScrollView,
   View,
@@ -17,7 +18,7 @@ import changeDimWidthHeight from '../actions/dimensions';
 import categories from '../assets/categories';
 import Category from '../components/Category';
 import exit from '../components/Exit';
-import AdBanner from '../components/AdMob';
+//import AdBanner from '../components/AdMob';
 import ThumbIcon from '../components/Icons';
 import rate, { check10Days } from '../components/Rate';
 import theme from '../styles/theme';
@@ -70,8 +71,8 @@ class Categories extends React.PureComponent {
     this.setState({ isLoading: true });
     AsyncStorage.getItem('alreadyLaunched').then(async (value) => {
       if (value === null) {
-        AsyncStorage.setItem('alreadyLaunched', 'true');
-        AsyncStorage.setItem('favoriteKnots', JSON.stringify([]));
+        await AsyncStorage.setItem('alreadyLaunched', 'true');
+        await AsyncStorage.setItem('favoriteKnots', JSON.stringify([]));
         await connectToDB();
         /*End spinner*/
         this.setState({ isLoading: false });
@@ -192,7 +193,7 @@ class Categories extends React.PureComponent {
         </ScrollView>
         <ThumbIcon onPress={Rate} style={{ bottom: height + 15 }} />
         {/*AdMob banner*/}
-        <AdBanner setHeight={(state) => this.setState(state)} />
+        {/*<AdBanner setHeight={(state) => this.setState(state)} />*/}
       </>
     );
   }
@@ -211,51 +212,51 @@ const styles = StyleSheet.create({
 });
 
 export const knotPropType = PropTypes.shape({
-  knotennummer: PropTypes.string,
-  knotenname_de: PropTypes.string,
-  knotenname_eng: PropTypes.string,
-  knotenname_esp: PropTypes.string,
-  knotenname_ru: PropTypes.string,
-  knotenname_fr: PropTypes.string,
-  knotenname_it: PropTypes.string,
-  knotenname_tuek: PropTypes.string,
-  knotenbeschreibung_de: PropTypes.string,
-  knotenbeschreibung_eng: PropTypes.string,
-  knotenbeschreibung_esp: PropTypes.string,
-  knotenbeschreibung_ru: PropTypes.string,
-  knotenbeschreibung_fr: PropTypes.string,
-  knotenbeschreibung_it: PropTypes.string,
-  knotenbeschreibung_tuek: PropTypes.string,
-  knoten_frameweite: PropTypes.string,
-  knoten_framehoehe: PropTypes.string,
-  knoten_frame_2d: PropTypes.string,
-  knoten_frame_360: PropTypes.string,
-  knoten_count_x_2d: PropTypes.string,
-  knoten_count_y_2d: PropTypes.string,
-  knoten_count_x_360: PropTypes.string,
-  knoten_count_y_360: PropTypes.string,
-  knotenbild2d: PropTypes.string,
-  knotenbild360: PropTypes.string,
-  knoten_typ: PropTypes.string,
-  knoten_abok: PropTypes.string,
-  favorite: PropTypes.bool,
+  knotennummer: RNPropTypes.string,
+  knotenname_de: RNPropTypes.string,
+  knotenname_eng: RNPropTypes.string,
+  knotenname_esp: RNPropTypes.string,
+  knotenname_ru: RNPropTypes.string,
+  knotenname_fr: RNPropTypes.string,
+  knotenname_it: RNPropTypes.string,
+  knotenname_tuek: RNPropTypes.string,
+  knotenbeschreibung_de: RNPropTypes.string,
+  knotenbeschreibung_eng: RNPropTypes.string,
+  knotenbeschreibung_esp: RNPropTypes.string,
+  knotenbeschreibung_ru: RNPropTypes.string,
+  knotenbeschreibung_fr: RNPropTypes.string,
+  knotenbeschreibung_it: RNPropTypes.string,
+  knotenbeschreibung_tuek: RNPropTypes.string,
+  knoten_frameweite: RNPropTypes.string,
+  knoten_framehoehe: RNPropTypes.string,
+  knoten_frame_2d: RNPropTypes.string,
+  knoten_frame_360: RNPropTypes.string,
+  knoten_count_x_2d: RNPropTypes.string,
+  knoten_count_y_2d: RNPropTypes.string,
+  knoten_count_x_360: RNPropTypes.string,
+  knoten_count_y_360: RNPropTypes.string,
+  knotenbild2d: RNPropTypes.string,
+  knotenbild360: RNPropTypes.string,
+  knoten_typ: RNPropTypes.string,
+  knoten_abok: RNPropTypes.string,
+  favorite: RNPropTypes.bool,
 });
 
 Categories.propTypes = {
   navigation: PropTypes.shape({
-    navigate: PropTypes.func.isRequired,
-    setParams: PropTypes.func.isRequired,
-  }).isRequired,
-  setFilteredKnots: PropTypes.func.isRequired,
-  getKnots: PropTypes.func.isRequired,
-  getLanguage: PropTypes.func.isRequired,
-  setLanguage: PropTypes.func.isRequired,
-  knots: PropTypes.arrayOf(knotPropType).isRequired,
-  langCode: PropTypes.string.isRequired,
-  isPortrait: PropTypes.bool.isRequired,
-  dHeight: PropTypes.number.isRequired,
-  dWidth: PropTypes.number.isRequired,
-  handleOrientationChanges: PropTypes.func.isRequired,
+    navigate: RNPropTypes.func,
+    setParams: RNPropTypes.func,
+  }),
+  setFilteredKnots: RNPropTypes.func,
+  getKnots: RNPropTypes.func,
+  getLanguage: RNPropTypes.func,
+  setLanguage: RNPropTypes.func,
+  knots: RNPropTypes.arrayOf(knotPropType),
+  langCode: RNPropTypes.string,
+  isPortrait: RNPropTypes.bool,
+  dHeight: RNPropTypes.number,
+  dWidth: RNPropTypes.number,
+  handleOrientationChanges: RNPropTypes.func,
 };
 
 const mapStateToProps = ({

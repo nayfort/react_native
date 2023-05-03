@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View, Text } from 'react-native';
+import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import theme from './styles/theme';
 import { NavigationContainer } from '@react-navigation/native';
 import Categories from './screens/Categories';
@@ -8,6 +8,9 @@ import {
   TransitionSpecs,
   HeaderStyleInterpolators,
 } from '@react-navigation/stack';
+import {LanguagesIcon, ShareIcon} from "./components/Icons";
+import shareApp from './components/Share';
+import HeaderTitle from "./components/HeaderTitle";
 
 
 const Stack = createStackNavigator();
@@ -57,7 +60,7 @@ export default React.memo(() => (
                       headerLeft: () => (
                         <View style={styles.headerLeft}>
                           <ShareIcon
-                            onPress={() => shareApp(params.langCode)}
+                              onPress={() => shareApp(params.langCode)}
                             style={{ width: 30 }}
                           />
                         </View>

@@ -1,5 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import RNPropTypes from 'deprecated-react-native-prop-types';
+import PropTypes from "prop-types";
 import { Text, StyleSheet, TouchableOpacity, View, Image } from 'react-native';
 
 import theme from '../styles/theme';
@@ -33,9 +34,9 @@ const CategoryWrapper = React.memo((props) => {
 });
 
 CategoryWrapper.propTypes = {
-  onPress: PropTypes.func.isRequired,
-  active: PropTypes.bool.isRequired,
-  height: PropTypes.number.isRequired,
+  onPress: RNPropTypes.func,
+  active: RNPropTypes.bool,
+  height: RNPropTypes.number,
 };
 
 const Category = React.memo((props) => {
@@ -131,17 +132,17 @@ export const LanguageCategory = (props) => {
 };
 
 const dataProp = PropTypes.shape({
-  name: PropTypes.string.isRequired,
-  image: PropTypes.number,
-  count: PropTypes.number,
+  name: RNPropTypes.string,
+  image: RNPropTypes.number,
+  count: RNPropTypes.number,
 });
 
 const categoryPropTypes = {
-  onPress: PropTypes.func.isRequired,
-  active: PropTypes.bool,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
-  isPortrait: PropTypes.bool.isRequired,
+  onPress: RNPropTypes.func,
+  active: RNPropTypes.bool,
+  width: RNPropTypes.number,
+  height: RNPropTypes.number,
+  isPortrait: RNPropTypes.bool,
 };
 
 const categoryDefaultProps = {
@@ -150,7 +151,7 @@ const categoryDefaultProps = {
 
 Category.propTypes = {
   ...categoryPropTypes,
-  data: dataProp.isRequired,
+  data: dataProp,
 };
 Category.defaultProps = {
   ...categoryDefaultProps,
@@ -158,7 +159,7 @@ Category.defaultProps = {
 
 KnotCategory.propTypes = {
   ...categoryPropTypes,
-  data: dataProp.isRequired,
+  data: dataProp,
 };
 KnotCategory.defaultProps = {
   ...categoryDefaultProps,
@@ -166,7 +167,7 @@ KnotCategory.defaultProps = {
 
 LanguageCategory.propTypes = {
   ...categoryPropTypes,
-  name: PropTypes.string.isRequired,
+  name: RNPropTypes.string,
 };
 LanguageCategory.defaultProps = {
   ...categoryDefaultProps,

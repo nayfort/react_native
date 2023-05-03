@@ -1,13 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Alert, Linking, Platform } from 'react-native';
-import { nativeApplicationVersion } from 'expo-application';
+import localisation from '../assets/staticLocalisation';
 
-import {
-  appName,
-  rateMessage,
-  noThx,
-  rate,
-} from '../assets/staticLocalisation.json';
 import { GOOGLE_PLAY_ID, APPLE_APP_ID } from '../constants/bundleIDs';
 
 /*Confirm rate app in store*/
@@ -26,12 +20,12 @@ const confirmRate = () => {
 /*Call user to install rate app*/
 export const rateAlert = (langCode) => {
   Alert.alert(
-    `${appName[`name_${langCode}`]} ` /*v${nativeApplicationVersion}*/,
-    rateMessage[`name_${langCode}`],
+    `${localisation.appName[`name_${langCode}`]} ` /*v${nativeApplicationVersion}*/,
+    localisation.rateMessage[`name_${langCode}`],
     [
-      { text: noThx[`name_${langCode}`], style: 'cancel' },
+      { text: localisation.noThx[`name_${langCode}`], style: 'cancel' },
       {
-        text: rate[`name_${langCode}`],
+        text: localisation.rate[`name_${langCode}`],
         onPress: () => confirmRate(),
       },
     ]
@@ -63,16 +57,16 @@ export const check10Days = (langCode) => {
 
         if (currentDate - exDate >= ten) {
           Alert.alert(
-            `${appName[`name_${langCode}`]} ` /*v${nativeApplicationVersion}*/,
-            rateMessage[`name_${langCode}`],
+            `${localisation.appName[`name_${langCode}`]} ` /*v${nativeApplicationVersion}*/,
+            localisation.rateMessage[`name_${langCode}`],
             [
               {
-                text: noThx[`name_${langCode}`],
+                text: localisation.noThx[`name_${langCode}`],
                 style: 'cancel',
                 onPress: () => Cancel,
               },
               {
-                text: rate[`name_${langCode}`],
+                text: localisation.rate[`name_${langCode}`],
                 onPress: confirmRate,
               },
               {

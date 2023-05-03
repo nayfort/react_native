@@ -1,5 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import RNPropTypes from 'deprecated-react-native-prop-types';
+import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 import {
   FlatList,
@@ -15,12 +16,12 @@ import { knotSet } from '../actions/knots';
 import { SearchIcon } from '../components/Icons';
 import HeaderTitle from '../components/HeaderTitle';
 import SearchBox from '../components/SearchBox';
-import AdBanner from '../components/AdMob';
+//import AdBanner from '../components/AdMob';
 import { knotPropType } from './Categories';
 import knotPreviews from '../assets/knots';
 import { results, search, noResult } from '../assets/staticLocalisation.json';
 import theme from '../styles/theme';
-import { showInterstitialAd } from '../components/AdMob';
+//import { showInterstitialAd } from '../components/AdMob';
 import { goBackSafe } from '../utils/GoBackSafe/GoBackSafe';
 import Spinner from '../components/Spinner/Spinner';
 
@@ -62,7 +63,7 @@ class Knots extends React.PureComponent {
     this.setState({ isLoading: true });
     const { navigation } = this.props;
     goBackSafe(navigation);
-    await showInterstitialAd();
+    //await showInterstitialAd();
     /*End spinner*/
     this.setState({ isLoading: false });
     return true;
@@ -155,7 +156,7 @@ class Knots extends React.PureComponent {
             {noResult[`name_${this.props.langCode}`]}
           </Text>
         ) : null}
-        <AdBanner />
+        {/*<AdBanner />*/}
       </View>
     );
   }
@@ -175,22 +176,22 @@ const styles = StyleSheet.create({
 });
 
 Knots.propTypes = {
-  knots: PropTypes.arrayOf(knotPropType).isRequired,
+  knots: RNPropTypes.arrayOf(knotPropType),
   navigation: PropTypes.shape({
-    navigate: PropTypes.func.isRequired,
-    setOptions: PropTypes.func.isRequired,
-    setParams: PropTypes.func.isRequired,
-  }).isRequired,
+    navigate: RNPropTypes.func,
+    setOptions: RNPropTypes.func,
+    setParams: RNPropTypes.func,
+  }),
   route: PropTypes.shape({
     params: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
-  setKnot: PropTypes.func.isRequired,
-  langCode: PropTypes.string.isRequired,
-  isPortrait: PropTypes.bool.isRequired,
-  dHeight: PropTypes.number.isRequired,
-  dWidth: PropTypes.number.isRequired,
+      title: RNPropTypes.string,
+    }),
+  }),
+  setKnot: RNPropTypes.func,
+  langCode: RNPropTypes.string,
+  isPortrait: RNPropTypes.bool,
+  dHeight: RNPropTypes.number,
+  dWidth: RNPropTypes.number,
 };
 
 const mapStateToProps = ({

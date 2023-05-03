@@ -1,11 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import RNPropTypes from 'deprecated-react-native-prop-types';
 import { ScrollView } from 'react-native';
 import { connect } from 'react-redux';
+import PropTypes from "prop-types";
 
 import { languageSet } from '../actions/language';
 import { LanguageCategory } from '../components/Category';
-import AdBanner from '../components/AdMob';
+//import AdBanner from '../components/AdMob';
 import languages from '../assets/languages.json';
 import { goBackSafe } from '../utils/GoBackSafe/GoBackSafe';
 import theme from '../styles/theme';
@@ -31,20 +32,20 @@ const Language = React.memo(
         ))}
       </ScrollView>
       {/*AdMob banner*/}
-      <AdBanner />
+      {/*<AdBanner />*/}
     </>
   )
 );
 
 Language.propTypes = {
-  setLanguage: PropTypes.func.isRequired,
-  langCode: PropTypes.string.isRequired,
+  setLanguage: RNPropTypes.func,
+  langCode: RNPropTypes.string,
   navigation: PropTypes.shape({
-    goBack: PropTypes.func.isRequired,
-  }).isRequired,
-  isPortrait: PropTypes.bool.isRequired,
-  height: PropTypes.number.isRequired,
-  width: PropTypes.number.isRequired,
+    goBack: RNPropTypes.func,
+  }),
+  isPortrait: RNPropTypes.bool,
+  height: RNPropTypes.number,
+  width: RNPropTypes.number,
 };
 
 const mapStateToProps = ({

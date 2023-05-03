@@ -1,7 +1,6 @@
 import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-import { exitCancel, exitConfirm } from '../../assets/staticLocalisation';
+import localisation from '../../assets/staticLocalisation';
 
 /*Save user answer*/
 const saveData = async () => {
@@ -19,10 +18,10 @@ const AlertAccess = (exitApp, langCode) =>
     '',
     [
       {
-        text: exitCancel[`name_${langCode}`],
+        text: localisation.exitCancel[`name_${langCode}`],
         onPress: () => exitApp(langCode),
       },
-      { text: exitConfirm[`name_${langCode}`], onPress: () => saveData() },
+      { text: localisation.exitConfirm[`name_${langCode}`], onPress: () => saveData() },
     ],
     { cancelable: false }
   );

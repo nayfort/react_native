@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import RNPropTypes, {ViewPropTypes} from 'deprecated-react-native-prop-types';
+import PropTypes from "prop-types";
 import {
-  TouchableOpacity,
-  Animated,
-  View,
-  Easing,
-  ViewPropTypes,
+    TouchableOpacity,
+    Animated,
+    View,
+    Easing,
 } from 'react-native';
 import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
 
@@ -95,19 +95,19 @@ const Icon = React.memo((props) => {
 
 Icon.propTypes = {
   coordsEmpty: PropTypes.shape({
-    originX: PropTypes.number,
-    originY: PropTypes.number,
-  }).isRequired,
-  size: PropTypes.shape({
-    width: PropTypes.number,
-    height: PropTypes.number,
-  }).isRequired,
-  coordsFull: PropTypes.shape({
-    originX: PropTypes.number,
-    originY: PropTypes.number,
+    originX: RNPropTypes.number,
+    originY: RNPropTypes.number,
   }),
-  onPress: PropTypes.func,
-  reverse: PropTypes.bool,
+  size: PropTypes.shape({
+    width: RNPropTypes.number,
+    height: RNPropTypes.number,
+  }),
+  coordsFull: PropTypes.shape({
+    originX: RNPropTypes.number,
+    originY: RNPropTypes.number,
+  }),
+  onPress: RNPropTypes.func,
+  reverse: RNPropTypes.bool,
 };
 
 Icon.defaultProps = {
@@ -144,7 +144,7 @@ const NewIcon = React.memo((props) => {
 });
 
 NewIcon.propTypes = {
-  onPress: PropTypes.func,
+  onPress: RNPropTypes.func,
   style: ViewPropTypes.style,
 };
 
@@ -288,7 +288,7 @@ const ThumbIcon = React.memo(({ onPress, style }) => (
 ));
 
 ThumbIcon.propTypes = {
-  onPress: PropTypes.func,
+  onPress: RNPropTypes.func,
   style: ViewPropTypes.style,
 };
 
@@ -304,7 +304,7 @@ export const RepeatIcon = (props) => (
 );
 
 RepeatIcon.propTypes = {
-  onPress: PropTypes.func,
+  onPress: RNPropTypes.func,
   style: ViewPropTypes.style,
 };
 

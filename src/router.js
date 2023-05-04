@@ -3,14 +3,19 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import theme from './styles/theme';
 import { NavigationContainer } from '@react-navigation/native';
 import Categories from './screens/Categories';
+import Languages from './screens/Languages';
 import {
   createStackNavigator,
   TransitionSpecs,
   HeaderStyleInterpolators,
 } from '@react-navigation/stack';
-import {LanguagesIcon, ShareIcon} from "./components/Icons";
+import {BackIcon, LanguagesIcon, SearchIcon, ShareIcon} from "./components/Icons";
 import shareApp from './components/Share';
 import HeaderTitle from "./components/HeaderTitle";
+import {goBackSafe} from "./utils/GoBackSafe/GoBackSafe";
+import Knot from "./screens/Knot";
+//import Knots from "./assets/knots";
+//import { showInterstitialAd } from './components/AdMob';
 
 
 const Stack = createStackNavigator();
@@ -67,6 +72,65 @@ export default React.memo(() => (
                       ),
                     })}
                   />
+                    {/*Second screen*/}
+                    <Stack.Screen
+                        name="Languages"
+                        component={Languages}
+                        options={({ navigation, route: { params } }) => ({
+                            headerTitle: () => (
+                                <HeaderTitle title={selectLang[`name_${params.langCode}`]} />
+                            ),
+                            headerLeft: () => (
+                                <View style={styles.headerLeft}>
+                                    <BackIcon
+                                        onPress={() => goBackSafe(navigation)}
+                                        style={{ width: 30 }}
+                                    />
+                                </View>
+                            ),
+                        })}
+                    />
+                    {/*/!*Third screen*!/*/}
+                    {/*<Stack.Screen*/}
+                    {/*    name="Knots"*/}
+                    {/*    component={Knots}*/}
+                    {/*    options={({ navigation, route: { params } }) => ({*/}
+                    {/*        headerTitle: () => <HeaderTitle title={params.title} />,*/}
+                    {/*        headerRight: () => (*/}
+                    {/*            <View style={styles.headerRight}>*/}
+                    {/*                <SearchIcon />*/}
+                    {/*            </View>*/}
+                    {/*        ),*/}
+                    {/*        headerLeft: () => (*/}
+                    {/*            <View style={styles.headerLeft}>*/}
+                    {/*                <BackIcon*/}
+                    {/*                    onPress={async () => {*/}
+                    {/*                        goBackSafe(navigation);*/}
+                    {/*                        await showInterstitialAd();*/}
+                    {/*                    }}*/}
+                    {/*                    style={{ width: 30 }}*/}
+                    {/*                />*/}
+                    {/*            </View>*/}
+                    {/*        ),*/}
+                    {/*    })}*/}
+                    {/*/>*/}
+                    {/*Forth screen*/}
+                    <Stack.Screen
+                        key="knot"
+                        name="Knot"
+                        component={Knot}
+                        options={({ navigation, route: { params } }) => ({
+                            headerTitle: () => <HeaderTitle title={params.title} />,
+                            headerLeft: () => (
+                                <View style={styles.headerLeft}>
+                                    <BackIcon
+                                        onPress={() => goBackSafe(navigation)}
+                                        style={{ width: 30 }}
+                                    />
+                                </View>
+                            ),
+                        })}
+                    />
                   </Stack.Navigator>
                   </NavigationContainer>
   </View>

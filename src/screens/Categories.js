@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import RNPropTypes from 'deprecated-react-native-prop-types';
 import PropTypes from "prop-types";
 import {
   ScrollView,
@@ -27,7 +26,7 @@ import AlertAccess from '../utils/AlertAccess/AlertAccess';
 import defaultLanguage from '../utils/DefaultLanguage/defaultLanguage';
 import Spinner from '../components/Spinner/Spinner';
 
-class Categories extends React.PureComponent {
+class Categories extends React.Component {
   state = {
     height: 0,
     access: false,
@@ -212,51 +211,51 @@ const styles = StyleSheet.create({
 });
 
 export const knotPropType = PropTypes.shape({
-  knotennummer: RNPropTypes.string,
-  knotenname_de: RNPropTypes.string,
-  knotenname_eng: RNPropTypes.string,
-  knotenname_esp: RNPropTypes.string,
-  knotenname_ru: RNPropTypes.string,
-  knotenname_fr: RNPropTypes.string,
-  knotenname_it: RNPropTypes.string,
-  knotenname_tuek: RNPropTypes.string,
-  knotenbeschreibung_de: RNPropTypes.string,
-  knotenbeschreibung_eng: RNPropTypes.string,
-  knotenbeschreibung_esp: RNPropTypes.string,
-  knotenbeschreibung_ru: RNPropTypes.string,
-  knotenbeschreibung_fr: RNPropTypes.string,
-  knotenbeschreibung_it: RNPropTypes.string,
-  knotenbeschreibung_tuek: RNPropTypes.string,
-  knoten_frameweite: RNPropTypes.string,
-  knoten_framehoehe: RNPropTypes.string,
-  knoten_frame_2d: RNPropTypes.string,
-  knoten_frame_360: RNPropTypes.string,
-  knoten_count_x_2d: RNPropTypes.string,
-  knoten_count_y_2d: RNPropTypes.string,
-  knoten_count_x_360: RNPropTypes.string,
-  knoten_count_y_360: RNPropTypes.string,
-  knotenbild2d: RNPropTypes.string,
-  knotenbild360: RNPropTypes.string,
-  knoten_typ: RNPropTypes.string,
-  knoten_abok: RNPropTypes.string,
-  favorite: RNPropTypes.bool,
+  knotennummer: PropTypes.string,
+  knotenname_de: PropTypes.string,
+  knotenname_eng: PropTypes.string,
+  knotenname_esp: PropTypes.string,
+  knotenname_ru: PropTypes.string,
+  knotenname_fr: PropTypes.string,
+  knotenname_it: PropTypes.string,
+  knotenname_tuek: PropTypes.string,
+  knotenbeschreibung_de: PropTypes.string,
+  knotenbeschreibung_eng: PropTypes.string,
+  knotenbeschreibung_esp: PropTypes.string,
+  knotenbeschreibung_ru: PropTypes.string,
+  knotenbeschreibung_fr:PropTypes.string,
+  knotenbeschreibung_it: PropTypes.string,
+  knotenbeschreibung_tuek: PropTypes.string,
+  knoten_frameweite: PropTypes.string,
+  knoten_framehoehe: PropTypes.string,
+  knoten_frame_2d: PropTypes.string,
+  knoten_frame_360: PropTypes.string,
+  knoten_count_x_2d: PropTypes.string,
+  knoten_count_y_2d: PropTypes.string,
+  knoten_count_x_360: PropTypes.string,
+  knoten_count_y_360: PropTypes.string,
+  knotenbild2d: PropTypes.string,
+  knotenbild360: PropTypes.string,
+  knoten_typ: PropTypes.string,
+  knoten_abok: PropTypes.string,
+  favorite: PropTypes.bool,
 });
 
 Categories.propTypes = {
   navigation: PropTypes.shape({
-    navigate: RNPropTypes.func,
-    setParams: RNPropTypes.func,
+    navigate: PropTypes.func,
+    setParams: PropTypes.func,
   }),
-  setFilteredKnots: RNPropTypes.func,
-  getKnots: RNPropTypes.func,
-  getLanguage: RNPropTypes.func,
-  setLanguage: RNPropTypes.func,
-  knots: RNPropTypes.arrayOf(knotPropType),
-  langCode: RNPropTypes.string,
-  isPortrait: RNPropTypes.bool,
-  dHeight: RNPropTypes.number,
-  dWidth: RNPropTypes.number,
-  handleOrientationChanges: RNPropTypes.func,
+  setFilteredKnots: PropTypes.func,
+  getKnots: PropTypes.func,
+  getLanguage: PropTypes.func,
+  setLanguage: PropTypes.func,
+  knots: PropTypes.arrayOf(knotPropType),
+  langCode: PropTypes.string,
+  isPortrait: PropTypes.bool,
+  dHeight: PropTypes.number,
+  dWidth: PropTypes.number,
+  handleOrientationChanges: PropTypes.func,
 };
 
 const mapStateToProps = ({
@@ -279,6 +278,4 @@ const mapDispatchToProps = (dispatch) => ({
   setLanguage: (code) => dispatch(languageSet(code)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps, null, {
-  pure: false,
-})(Categories);
+export default connect(mapStateToProps, mapDispatchToProps, null)(Categories);

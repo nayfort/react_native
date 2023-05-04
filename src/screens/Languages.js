@@ -1,5 +1,4 @@
 import React from 'react';
-import RNPropTypes from 'deprecated-react-native-prop-types';
 import { ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
@@ -38,14 +37,14 @@ const Language = React.memo(
 );
 
 Language.propTypes = {
-  setLanguage: RNPropTypes.func,
-  langCode: RNPropTypes.string,
+  setLanguage: PropTypes.func,
+  langCode: PropTypes.string,
   navigation: PropTypes.shape({
-    goBack: RNPropTypes.func,
+    goBack: PropTypes.func,
   }),
-  isPortrait: RNPropTypes.bool,
-  height: RNPropTypes.number,
-  width: RNPropTypes.number,
+  isPortrait: PropTypes.bool,
+  height: PropTypes.number,
+  width: PropTypes.number,
 };
 
 const mapStateToProps = ({

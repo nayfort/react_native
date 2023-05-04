@@ -1,5 +1,4 @@
 import React from 'react';
-import RNPropTypes from 'deprecated-react-native-prop-types';
 import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 import {
@@ -176,22 +175,22 @@ const styles = StyleSheet.create({
 });
 
 Knots.propTypes = {
-  knots: RNPropTypes.arrayOf(knotPropType),
+  knots: PropTypes.arrayOf(knotPropType),
   navigation: PropTypes.shape({
-    navigate: RNPropTypes.func,
-    setOptions: RNPropTypes.func,
-    setParams: RNPropTypes.func,
+    navigate: PropTypes.func,
+    setOptions: PropTypes.func,
+    setParams: PropTypes.func,
   }),
   route: PropTypes.shape({
     params: PropTypes.shape({
-      title: RNPropTypes.string,
+      title: PropTypes.string,
     }),
   }),
-  setKnot: RNPropTypes.func,
-  langCode: RNPropTypes.string,
-  isPortrait: RNPropTypes.bool,
-  dHeight: RNPropTypes.number,
-  dWidth: RNPropTypes.number,
+  setKnot: PropTypes.func,
+  langCode: PropTypes.string,
+  isPortrait: PropTypes.bool,
+  dHeight: PropTypes.number,
+  dWidth: PropTypes.number,
 };
 
 const mapStateToProps = ({

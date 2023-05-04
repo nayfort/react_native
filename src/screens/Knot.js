@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react';
-import RNPropTypes from 'deprecated-react-native-prop-types';
 import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 import {
@@ -16,7 +15,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Slider from '@react-native-community/slider';
-
 import { knotPropType } from './Categories';
 import {
   Icon360,
@@ -493,15 +491,15 @@ const styles = StyleSheet.create({
 Knot.propTypes = {
   knot: knotPropType,
   navigation: PropTypes.shape({
-    navigate: RNPropTypes.func,
-    setParams: RNPropTypes.func,
-    goBack: RNPropTypes.func,
+    navigate: PropTypes.func,
+    setParams: PropTypes.func,
+    goBack: PropTypes.func,
   }),
-  like: RNPropTypes.func,
-  langCode: RNPropTypes.string,
-  isPortrait: RNPropTypes.bool,
-  width: RNPropTypes.number,
-  height: RNPropTypes.number,
+  like: PropTypes.func,
+  langCode: PropTypes.string,
+  isPortrait: PropTypes.bool,
+  width: PropTypes.number,
+  height: PropTypes.number,
 };
 
 const mapStateToProps = ({

@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import store from './src/store';
 import AppNavigator from './src/router';
 import {Provider} from "react-redux";
+//import { getInterstitialAd } from './src/components/AdMob';
 
 
 export default function App() {
-//console.log('store:', store);
+    // useEffect(() => {
+    //     (async function () {
+    //         await getInterstitialAd();
+    //     })();
+    // }, []);
     return (
 
         <Provider store={store}>

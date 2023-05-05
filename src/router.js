@@ -19,8 +19,7 @@ import Knots from "./screens/Knots";
 
 
 const Stack = createStackNavigator();
-export const selLang = {
-    name_en: 'English',
+export const selectLang = {
 };
 const MyTransition = {
   gestureDirection: 'horizontal',
@@ -80,7 +79,7 @@ export default React.memo(() => (
                         component={Languages}
                         options={({ navigation, route: { params } }) => ({
                             headerTitle: () => (
-                                <HeaderTitle title={selLang[`name_${params}`]} />
+                                <HeaderTitle title={selectLang[`name_${params}`]} />
                             ),
                             headerLeft: () => (
                                 <View style={styles.headerLeft}>

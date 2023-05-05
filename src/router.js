@@ -14,7 +14,7 @@ import shareApp from './components/Share';
 import HeaderTitle from "./components/HeaderTitle";
 import {goBackSafe} from "./utils/GoBackSafe/GoBackSafe";
 import Knot from "./screens/Knot";
-//import Knots from "./assets/knots";
+import Knots from "./screens/Knots";
 //import { showInterstitialAd } from './components/AdMob';
 
 
@@ -91,29 +91,30 @@ export default React.memo(() => (
                         })}
                     />
                     {/*/!*Third screen*!/*/}
-                    {/*<Stack.Screen*/}
-                    {/*    name="Knots"*/}
-                    {/*    component={Knots}*/}
-                    {/*    options={({ navigation, route: { params } }) => ({*/}
-                    {/*        headerTitle: () => <HeaderTitle title={params.title} />,*/}
-                    {/*        headerRight: () => (*/}
-                    {/*            <View style={styles.headerRight}>*/}
-                    {/*                <SearchIcon />*/}
-                    {/*            </View>*/}
-                    {/*        ),*/}
-                    {/*        headerLeft: () => (*/}
-                    {/*            <View style={styles.headerLeft}>*/}
-                    {/*                <BackIcon*/}
-                    {/*                    onPress={async () => {*/}
-                    {/*                        goBackSafe(navigation);*/}
-                    {/*                        await showInterstitialAd();*/}
-                    {/*                    }}*/}
-                    {/*                    style={{ width: 30 }}*/}
-                    {/*                />*/}
-                    {/*            </View>*/}
-                    {/*        ),*/}
-                    {/*    })}*/}
-                    {/*/>*/}
+                    <Stack.Screen
+                        name="Knots"
+                        component={Knots}
+                        options={({ navigation, route: { params } }) => ({
+                            headerTitle: () => <HeaderTitle title={params.title} />,
+                            headerRight: () => (
+                                <View style={styles.headerRight}>
+                                    <SearchIcon />
+                                </View>
+                            ),
+                            headerLeft: () => (
+                                <View style={styles.headerLeft}>
+                                    <BackIcon
+                                        // onPress={async () => {
+                                        //     goBackSafe(navigation);
+                                        //     await showInterstitialAd();
+                                        // }}
+                                        style={{ width: 30 }}
+                                    />
+                                    <SearchIcon/>
+                                </View>
+                            ),
+                        })}
+                    />
                     {/*Forth screen*/}
                     <Stack.Screen
                         key="knot"

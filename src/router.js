@@ -19,7 +19,9 @@ import Knots from "./screens/Knots";
 
 
 const Stack = createStackNavigator();
-
+export const selLang = {
+    name_en: 'English',
+};
 const MyTransition = {
   gestureDirection: 'horizontal',
   transitionSpec: {
@@ -55,7 +57,7 @@ export default React.memo(() => (
                           <LanguagesIcon
                             onPress={() =>
                               navigation.navigate('Languages', {
-                                langCode: params.langCode,
+                                langCode: params,
                               })
                             }
                             style={{ width: 30 }}
@@ -65,7 +67,7 @@ export default React.memo(() => (
                       headerLeft: () => (
                         <View style={styles.headerLeft}>
                           <ShareIcon
-                              onPress={() => shareApp(params.langCode)}
+                              onPress={() => shareApp(params)}
                             style={{ width: 30 }}
                           />
                         </View>
@@ -78,7 +80,7 @@ export default React.memo(() => (
                         component={Languages}
                         options={({ navigation, route: { params } }) => ({
                             headerTitle: () => (
-                                <HeaderTitle title={selectLang[`name_${params.langCode}`]} />
+                                <HeaderTitle title={selLang[`name_${params}`]} />
                             ),
                             headerLeft: () => (
                                 <View style={styles.headerLeft}>

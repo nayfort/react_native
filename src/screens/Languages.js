@@ -13,7 +13,7 @@ import theme from '../styles/theme';
 const Language = React.memo(
   ({ setLanguage, langCode, navigation, isPortrait, height, width }) => (
     <>
-      {/*Background color depending phone theme*/}
+      {/*Background color depending on phone theme*/}
       <ScrollView style={{ backgroundColor: theme.backgroundColor }}>
         {languages.map(({ name, code }) => (
           <LanguageCategory
@@ -37,14 +37,14 @@ const Language = React.memo(
 );
 
 Language.propTypes = {
-  setLanguage: PropTypes.func,
-  langCode: PropTypes.string,
+  setLanguage: PropTypes.func.isRequired,
+  langCode: PropTypes.string.isRequired,
   navigation: PropTypes.shape({
-    goBack: PropTypes.func,
+    goBack: PropTypes.func.isRequired,
   }),
-  isPortrait: PropTypes.bool,
-  height: PropTypes.number,
-  width: PropTypes.number,
+  isPortrait: PropTypes.bool.isRequired,
+  height: PropTypes.number.isRequired,
+  width: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = ({

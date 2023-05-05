@@ -243,19 +243,19 @@ export const knotPropType = PropTypes.shape({
 
 Categories.propTypes = {
   navigation: PropTypes.shape({
-    navigate: PropTypes.func,
-    setParams: PropTypes.func,
+    navigate: PropTypes.func.isRequired,
+    setParams: PropTypes.func.isRequired,
   }),
-  setFilteredKnots: PropTypes.func,
-  getKnots: PropTypes.func,
-  getLanguage: PropTypes.func,
-  setLanguage: PropTypes.func,
+  setFilteredKnots: PropTypes.func.isRequired,
+  getKnots: PropTypes.func.isRequired,
+  getLanguage: PropTypes.func.isRequired,
+  setLanguage: PropTypes.func.isRequired,
   knots: PropTypes.arrayOf(knotPropType),
-  langCode: PropTypes.string,
-  isPortrait: PropTypes.bool,
-  dHeight: PropTypes.number,
-  dWidth: PropTypes.number,
-  handleOrientationChanges: PropTypes.func,
+  langCode: PropTypes.string.isRequired,
+  isPortrait: PropTypes.bool.isRequired,
+  dHeight: PropTypes.number.isRequired,
+  dWidth: PropTypes.number.isRequired,
+  handleOrientationChanges: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({

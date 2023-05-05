@@ -25,6 +25,7 @@ import PropTypes from 'prop-types';
 import { View, Platform } from 'react-native';
 import { AdMobBanner, AdMobInterstitial } from 'expo-ads-admob';
 
+
 export default class Banner extends React.PureComponent {
     state = {
         height: 0,

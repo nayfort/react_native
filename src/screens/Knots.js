@@ -8,6 +8,7 @@ import {
   StyleSheet,
   BackHandler,
   Text,
+    Image
 } from 'react-native';
 
 import { KnotCategory } from '../components/Category';
@@ -15,7 +16,7 @@ import { knotSet } from '../actions/knots';
 import { SearchIcon } from '../components/Icons';
 import HeaderTitle from '../components/HeaderTitle';
 import SearchBox from '../components/SearchBox';
-//import AdBanner from '../components/AdMob';
+//import AdMobBanner from '../components/AdMob';
 import { knotPropType } from './Categories';
 import knotPreviews from '../assets/knots';
 import { results, search, noResult } from '../assets/staticLocalisation.json';
@@ -155,7 +156,18 @@ class Knots extends React.PureComponent {
             {noResult[`name_${this.props.langCode}`]}
           </Text>
         ) : null}
-        {/*<AdBanner />*/}
+
+        {/*<AdMobBanner />*/}
+
+        {/*<Text>*/}
+        {/*  !Banner*/}
+        {/*</Text>*/}
+
+        <Image
+            source={{ uri: 'https://lh3.googleusercontent.com/nupo3HWMIUeuul9r2IBSfpBo568bL-STG9nA71dUuW97DnhAXFgm2WWjczhTFqRHQZRf5VA-_PmxIZaIAXhOUrzfr5unPjFuW9za=w0' }}
+            style={{ width: 200, height: 200 }}
+        />
+
       </View>
     );
   }
@@ -175,22 +187,22 @@ const styles = StyleSheet.create({
 });
 
 Knots.propTypes = {
-  knots: PropTypes.arrayOf(knotPropType),
+  knots: PropTypes.arrayOf(knotPropType).isRequired,
   navigation: PropTypes.shape({
-    navigate: PropTypes.func,
-    setOptions: PropTypes.func,
-    setParams: PropTypes.func,
-  }),
+    navigate: PropTypes.func.isRequired,
+    setOptions: PropTypes.func.isRequired,
+    setParams: PropTypes.func.isRequired,
+  }).isRequired,
   route: PropTypes.shape({
     params: PropTypes.shape({
-      title: PropTypes.string,
-    }),
-  }),
-  setKnot: PropTypes.func,
-  langCode: PropTypes.string,
-  isPortrait: PropTypes.bool,
-  dHeight: PropTypes.number,
-  dWidth: PropTypes.number,
+      title: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+  setKnot: PropTypes.func.isRequired,
+  langCode: PropTypes.string.isRequired,
+  isPortrait: PropTypes.bool.isRequired,
+  dHeight: PropTypes.number.isRequired,
+  dWidth: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = ({

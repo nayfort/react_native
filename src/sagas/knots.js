@@ -74,3 +74,4 @@ export default function* photosSaga() {
   yield takeLatest(KNOTS_GET, getKnots);
   yield takeLatest(KNOT_LIKE, likeKnot);
 }
+

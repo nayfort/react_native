@@ -17,7 +17,7 @@ import changeDimWidthHeight from '../actions/dimensions';
 import categories from '../assets/categories';
 import Category from '../components/Category';
 import exit from '../components/Exit';
-//import AdBanner from '../components/AdMob';
+import AdBanner from '../components/AdMob';
 import ThumbIcon from '../components/Icons';
 import rate, { check10Days } from '../components/Rate';
 import theme from '../styles/theme';
@@ -196,6 +196,7 @@ class Categories extends React.Component {
       </>
     );
   }
+
 }
 
 const styles = StyleSheet.create({
@@ -279,3 +280,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps, null)(Categories);
+

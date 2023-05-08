@@ -16,12 +16,12 @@ import { knotSet } from '../actions/knots';
 import { SearchIcon } from '../components/Icons';
 import HeaderTitle from '../components/HeaderTitle';
 import SearchBox from '../components/SearchBox';
-//import AdMobBanner from '../components/AdMob';
+import AdBanner from '../components/AdMob';
+import { showInterstitialAd } from '../components/AdMob';
 import { knotPropType } from './Categories';
 import knotPreviews from '../assets/knots';
 import { results, search, noResult } from '../assets/staticLocalisation.json';
 import theme from '../styles/theme';
-//import { showInterstitialAd } from '../components/AdMob';
 import { goBackSafe } from '../utils/GoBackSafe/GoBackSafe';
 import Spinner from '../components/Spinner/Spinner';
 
@@ -63,7 +63,7 @@ class Knots extends React.PureComponent {
     this.setState({ isLoading: true });
     const { navigation } = this.props;
     goBackSafe(navigation);
-    //await showInterstitialAd();
+    await showInterstitialAd();
     /*End spinner*/
     this.setState({ isLoading: false });
     return true;
@@ -157,16 +157,7 @@ class Knots extends React.PureComponent {
           </Text>
         ) : null}
 
-        {/*<AdMobBanner />*/}
-
-        {/*<Text>*/}
-        {/*  !Banner*/}
-        {/*</Text>*/}
-
-        <Image
-            source={{ uri: 'https://lh3.googleusercontent.com/nupo3HWMIUeuul9r2IBSfpBo568bL-STG9nA71dUuW97DnhAXFgm2WWjczhTFqRHQZRf5VA-_PmxIZaIAXhOUrzfr5unPjFuW9za=w0' }}
-            style={{ width: 200, height: 200 }}
-        />
+        <AdBanner />
 
       </View>
     );

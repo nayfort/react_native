@@ -15,7 +15,7 @@ import HeaderTitle from "./components/HeaderTitle";
 import {goBackSafe} from "./utils/GoBackSafe/GoBackSafe";
 import Knot from "./screens/Knot";
 import Knots from "./screens/Knots";
-//import { showInterstitialAd } from './components/AdMob';
+import { showInterstitialAd } from './components/AdMob';
 
 
 const Stack = createStackNavigator();
@@ -105,10 +105,10 @@ export default React.memo(() => (
                             headerLeft: () => (
                                 <View style={styles.headerLeft}>
                                     <BackIcon
-                                        // onPress={async () => {
-                                        //     goBackSafe(navigation);
-                                        //     await showInterstitialAd();
-                                        // }}
+                                        onPress={async () => {
+                                            goBackSafe(navigation);
+                                            await showInterstitialAd();
+                                        }}
                                         style={{ width: 30 }}
                                     />
                                     <SearchIcon/>

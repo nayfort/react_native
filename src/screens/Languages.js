@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 import { languageSet } from '../actions/language';
 import { LanguageCategory } from '../components/Category';
-//import AdBanner from '../components/AdMob';
+import AdBanner from '../components/AdMob';
 import languages from '../assets/languages.json';
 import { goBackSafe } from '../utils/GoBackSafe/GoBackSafe';
 import theme from '../styles/theme';
@@ -31,7 +31,7 @@ const Language = React.memo(
         ))}
       </ScrollView>
       {/*AdMob banner*/}
-      {/*<AdBanner />*/}
+      <AdBanner />
     </>
   )
 );

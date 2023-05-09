@@ -1,5 +1,6 @@
 import * as SQLite from 'expo-sqlite';
 import { Asset } from 'expo-asset';
+import * as FileSystem from 'expo-file-system';
 
 const connectToDB = async () => {
   const { exists, isDirectory } = await FileSystem.getInfoAsync(

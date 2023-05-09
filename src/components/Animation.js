@@ -111,6 +111,7 @@ export default class Animation extends React.PureComponent {
       duration:
         ((frameCount - this.animationValue._value) / (speed / 2)) * 1000,
       easing: Easing.linear,
+      useNativeDriver: true,
     });
 
     if (loop) {

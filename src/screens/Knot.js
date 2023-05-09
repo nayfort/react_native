@@ -28,7 +28,6 @@ import {
   RepeatIcon,
   LikeIcon,
 } from '../components/Icons';
-//import { showInterstitialAd } from '../components/AdMob';
 import Animation from '../components/Animation';
 import KnotsSprites from '../assets/knots';
 import types from '../assets/categories';
@@ -42,6 +41,7 @@ import {
 import { knotLike } from '../actions/knots';
 import theme from '../styles/theme';
 import { goBackSafe } from '../utils/GoBackSafe/GoBackSafe';
+//import { showInterstitialAd } from '../components/AdMob';
 
 class Knot extends React.PureComponent {
   constructor(props) {
@@ -243,6 +243,7 @@ class Knot extends React.PureComponent {
     const RotateData = this.spinValue.interpolate({
       inputRange: [0, 1],
       outputRange: ['0deg', '180deg'],
+      useNativeDriver: true,
     });
     const MirrorData = this.mirrorValue.interpolate({
       inputRange: [0, 1],

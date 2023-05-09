@@ -320,7 +320,7 @@ class Knot extends React.PureComponent {
               style={[
                 styles.slider,
                 {
-                  width: knotHeight,
+                  width: width,
                   marginLeft: isPortrait ? -knotHeight / 2.2 : 0,
                   marginRight: !isPortrait ? -knotHeight / 2.3 : 0,
                 },

@@ -113,7 +113,7 @@ class Knot extends React.PureComponent {
     return true;
   };
 
-  like = () => {
+  like = async () => {
     const {
       navigation,
       knot: { knotennummer, favorite },
@@ -128,7 +128,8 @@ class Knot extends React.PureComponent {
       ),
     });
 
-    like(knotennummer);
+    await like(knotennummer);
+    this.setState({});
   };
 
   onEndAnimation = () => this.setState({ paused: true, isFinished: true });

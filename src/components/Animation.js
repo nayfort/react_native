@@ -111,7 +111,7 @@ export default class Animation extends React.PureComponent {
       duration:
         ((frameCount - this.animationValue._value) / (speed / 2)) * 1000,
       easing: Easing.linear,
-      useNativeDriver: true,
+      useNativeDriver: false,
     });
 
     if (loop) {
@@ -122,6 +122,7 @@ export default class Animation extends React.PureComponent {
             toValue: frameCount,
             duration: (frameCount / (speed / 2)) * 1000,
             easing: Easing.linear,
+            useNativeDriver: true,
           });
           this.loopAnimation(fullAnimation);
         }

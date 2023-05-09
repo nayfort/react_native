@@ -5,7 +5,7 @@ const Spinner = React.memo(() => {
   return (
     <View style={styles.spinnerBlock}>
       <Image source={require('../../assets/spinner/spinner.gif')} />
-      {/*Spinner image*/}
+      {/*spinner image*/}
     </View>
   );
 });

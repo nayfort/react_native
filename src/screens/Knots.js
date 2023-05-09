@@ -16,14 +16,14 @@ import { knotSet } from '../actions/knots';
 import { SearchIcon } from '../components/Icons';
 import HeaderTitle from '../components/HeaderTitle';
 import SearchBox from '../components/SearchBox';
-import AdBanner from '../components/AdMob';
-import { showInterstitialAd } from '../components/AdMob';
 import { knotPropType } from './Categories';
 import knotPreviews from '../assets/knots';
 import { results, search, noResult } from '../assets/staticLocalisation.json';
 import theme from '../styles/theme';
 import { goBackSafe } from '../utils/GoBackSafe/GoBackSafe';
 import Spinner from '../components/Spinner/Spinner';
+//import AdBanner from '../components/AdMob';
+//import { showInterstitialAd } from '../components/AdMob';
 
 class Knots extends React.PureComponent {
   constructor(props) {
@@ -63,7 +63,7 @@ class Knots extends React.PureComponent {
     this.setState({ isLoading: true });
     const { navigation } = this.props;
     goBackSafe(navigation);
-    await showInterstitialAd();
+    //await showInterstitialAd();
     /*End spinner*/
     this.setState({ isLoading: false });
     return true;
@@ -157,7 +157,7 @@ class Knots extends React.PureComponent {
           </Text>
         ) : null}
 
-        <AdBanner />
+        {/*<AdBanner />*/}
 
       </View>
     );

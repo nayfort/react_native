@@ -17,7 +17,6 @@ import changeDimWidthHeight from '../actions/dimensions';
 import categories from '../assets/categories';
 import Category from '../components/Category';
 import exit from '../components/Exit';
-import AdBanner from '../components/AdMob';
 import ThumbIcon from '../components/Icons';
 import rate, { check10Days } from '../components/Rate';
 import theme from '../styles/theme';
@@ -25,6 +24,7 @@ import connectToDB from '../db';
 import AlertAccess from '../utils/AlertAccess/AlertAccess';
 import defaultLanguage from '../utils/DefaultLanguage/defaultLanguage';
 import Spinner from '../components/Spinner/Spinner';
+//import AdBanner from '../components/AdMob';
 
 class Categories extends React.Component {
   state = {
@@ -191,7 +191,7 @@ class Categories extends React.Component {
           })}
         </ScrollView>
         <ThumbIcon onPress={Rate} style={{ bottom: height + 15 }} />
-        {/*AdMob banner*/}
+        {/*admob banner*/}
         {/*<AdBanner setHeight={(state) => this.setState(state)} />*/}
       </>
     );

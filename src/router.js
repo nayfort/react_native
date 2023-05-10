@@ -111,7 +111,6 @@ export default React.memo(() => (
                                         }}
                                         style={{ width: 30 }}
                                     />
-                                    <SearchIcon/>
                                 </View>
                             ),
                         })}

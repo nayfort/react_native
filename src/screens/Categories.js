@@ -75,6 +75,8 @@ class Categories extends React.Component {
         await connectToDB();
         /*End spinner*/
         this.setState({ isLoading: false });
+      } else {
+        await connectToDB();
       }
       check10Days(langCode);
       this.Accessed();

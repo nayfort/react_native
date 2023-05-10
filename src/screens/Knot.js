@@ -173,7 +173,7 @@ class Knot extends React.PureComponent {
       toValue: !rotated,
       duration: 1000,
       easing: Easing.linear,
-      useNativeDriver: true,
+      useNativeDriver: false,
     }).start();
     this.setState({
       rotated: !rotated,
@@ -188,7 +188,7 @@ class Knot extends React.PureComponent {
       toValue: !mirrored,
       duration: 1000,
       easing: Easing.linear,
-      useNativeDriver: true,
+      useNativeDriver: false,
     }).start();
     this.setState({
       mirrored: !mirrored,

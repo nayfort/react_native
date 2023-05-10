@@ -109,7 +109,7 @@ class Categories extends React.Component {
     return true;
   };
 
-  /*Search function*/
+
   filterKnots = (catCode) => {
     const { knots, getKnots } = this.props;
     getKnots()

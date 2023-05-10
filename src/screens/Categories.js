@@ -111,7 +111,8 @@ class Categories extends React.Component {
 
   /*Search function*/
   filterKnots = (catCode) => {
-    const { knots } = this.props;
+    const { knots, getKnots } = this.props;
+    getKnots()
 
     switch (catCode) {
       case 'all': {

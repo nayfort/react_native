@@ -1,14 +1,13 @@
-const defaultAssetExts = require('metro-config/src/defaults/defaults').assetExts;
+const { getDefaultConfig } = require('@expo/metro-config');
 
-module.exports = {
-    resolver: {
-        assetExts: [
-            ...defaultAssetExts,
-        'db',
-        'ttf',
-        'png',
-        'jpg',
-        'car'
-]
-}
-};
+module.exports = (async () => {
+    const {
+        resolver: { assetExts },
+    } = await getDefaultConfig(__dirname);
+
+    return {
+        resolver: {
+            assetExts: [...assetExts, 'db', 'ttf', 'png', 'jpg', 'car'],
+        },
+    };
+})();

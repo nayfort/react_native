@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Platform } from 'react-native';
 import Constants from 'expo-constants/build/Constants';
-import { AdMobBanner, AdMobInterstitial } from 'expo';
+//import { AdMobBanner, AdMobInterstitial } from 'expo';
 
 export default class AdBanner extends React.PureComponent {
     state = {

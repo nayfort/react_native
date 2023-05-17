@@ -108,7 +108,7 @@ class Knot extends React.PureComponent {
   handleBackEvent = async () => {
     const { navigation } = this.props;
     goBackSafe(navigation);
-    // await showInterstitialAd();
+    //await showInterstitialAd();
 
     return true;
   };

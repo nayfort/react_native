@@ -1216,7 +1216,7 @@
     node-forge "^1.2.1"
     nullthrows "^1.1.1"
 
-"@expo/config-plugins@4.1.5", "@expo/config-plugins@^4.0.14":
+"@expo/config-plugins@4.1.5":
   version "4.1.5"
   resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-4.1.5.tgz#9d357d2cda9c095e511b51583ede8a3b76174068"
   integrity sha512-RVvU40RtZt12HavuDAe+LDIq9lHj7sheOfMEHdmpJ/uTA8pgvkbc56XF6JHQD+yRr6+uhhb+JnAasGq49dsQbw==
@@ -3156,9 +3156,9 @@ camelcase@^6.0.0, camelcase@^6.2.0:
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
 caniuse-lite@^1.0.30001449:
-  version "1.0.30001487"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001487.tgz#d882d1a34d89c11aea53b8cdc791931bdab5fe1b"
-  integrity sha512-83564Z3yWGqXsh2vaH/mhXfEM0wX+NlBCm1jYHOb97TrTWJEmPTccZgeLTPBUUb0PNVo+oomb7wkimZBIERClA==
+  version "1.0.30001488"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001488.tgz#d19d7b6e913afae3e98f023db97c19e9ddc5e91f"
+  integrity sha512-NORIQuuL4xGpIy6iCCQGN4iFjlBXtfKWIenlUuyZJumLRIindLb7wXM+GO8erEhb7vXfcnf4BAg2PrSDN5TNLQ==
 
 chalk@^2.0.0, chalk@^2.0.1, chalk@^2.4.2:
   version "2.4.2"
@@ -4270,13 +4270,6 @@ expect@^29.5.0:
     jest-matcher-utils "^29.5.0"
     jest-message-util "^29.5.0"
     jest-util "^29.5.0"
-
-expo-ads-admob@^13.0.0:
-  version "13.0.0"
-  resolved "https://registry.yarnpkg.com/expo-ads-admob/-/expo-ads-admob-13.0.0.tgz#c75174ab05b083647b0866d98c7680cf990edb26"
-  integrity sha512-Q3OFQzRWbzSdf4ctECrzkGYG2hF7bwhXV2mZxNqhlkYgK+V4ohmLkuCRbMQYnzxZj1PJ82Q5sn40LYqBCWvcQw==
-  dependencies:
-    "@expo/config-plugins" "^4.0.14"
 
 expo-application@^5.1.1, expo-application@~5.1.1:
   version "5.1.1"

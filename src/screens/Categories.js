@@ -115,7 +115,8 @@ import Spinner from '../components/Spinner/Spinner';
 
 
   filterKnots = (catCode) => {
-    const { knots } = this.props;
+      const { knots, getKnots } = this.props;
+      getKnots()
 
     switch (catCode) {
       case 'all': {

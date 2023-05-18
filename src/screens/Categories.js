@@ -33,7 +33,6 @@ import Spinner from '../components/Spinner/Spinner';
     isLoading: true,
   };
 
-  /*Function for get user accessed use knots API*/
   Accessed = async () => {
     const { langCode, setLanguage } = this.props;
 
@@ -93,7 +92,6 @@ import Spinner from '../components/Spinner/Spinner';
       this.setState({ isLoading: false });
     } catch (error) {
       console.log(error);
-      /*Handle error*/
     }
   };
 

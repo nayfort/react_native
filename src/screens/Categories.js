@@ -26,15 +26,15 @@ import defaultLanguage from '../utils/DefaultLanguage/defaultLanguage';
 import Spinner from '../components/Spinner/Spinner';
 //import AdBanner from '../components/AdMob';
 
-class Categories extends React.Component {
+  class Categories extends React.Component {
   state = {
     height: 0,
     access: false,
-    isLoading: false,
+    isLoading: true,
   };
 
   /*Function for get user accessed use knots API*/
-  Accessed = () => {
+  Accessed = async () => {
     const { langCode, setLanguage } = this.props;
 
     const functions = () => {
@@ -43,13 +43,10 @@ class Categories extends React.Component {
     };
 
     try {
-      AsyncStorage.getItem('access').then((value) => {
-        if (value !== 'true') {
-          functions();
-        } else if (value === null) {
-          functions();
-        }
-      });
+      const value = await AsyncStorage.getItem('access');
+      if (value !== 'true' || value === null) {
+        functions();
+      }
     } catch (e) {
       alert('Failed to fetch the data from storage');
     }
@@ -66,30 +63,39 @@ class Categories extends React.Component {
 
     BackHandler.addEventListener('hardwareBackPress', this.exitApp);
     Dimensions.addEventListener('change', handleOrientationChanges);
-    /*Start spinner*/
-    this.setState({ isLoading: true });
-    AsyncStorage.getItem('alreadyLaunched').then(async (value) => {
-      if (value === null) {
-        await AsyncStorage.setItem('alreadyLaunched', 'true');
-        await AsyncStorage.setItem('favoriteKnots', JSON.stringify([]));
-        await connectToDB();
-        /*End spinner*/
-        this.setState({ isLoading: false });
-      } else {
-        await connectToDB();
-      }
-      check10Days(langCode);
-      this.Accessed();
-      await getKnots();
-      /*End spinner*/
-      this.setState({ isLoading: false });
-    });
+
+    this.loadData();
     getLanguage();
     /*Set languages params*/
     navigation.setParams({
       langCode,
     });
   }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.exitApp);
+    Dimensions.removeEventListener('change', handleOrientationChanges);
+  }
+
+  loadData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('alreadyLaunched');
+      if (value === null) {
+        await AsyncStorage.setItem('alreadyLaunched', 'true');
+        await AsyncStorage.setItem('favoriteKnots', JSON.stringify([]));
+      }
+
+      check10Days(this.props.langCode);
+      await connectToDB();
+      await this.Accessed();
+      await this.props.getKnots();
+
+      this.setState({ isLoading: false });
+    } catch (error) {
+      console.log(error);
+      /*Handle error*/
+    }
+  };
 
   componentDidUpdate(prevProps) {
     const { navigation, langCode } = this.props;
@@ -111,8 +117,7 @@ class Categories extends React.Component {
 
 
   filterKnots = (catCode) => {
-    const { knots, getKnots } = this.props;
-    getKnots()
+    const { knots } = this.props;
 
     switch (catCode) {
       case 'all': {
@@ -283,4 +288,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps, null)(Categories);
-

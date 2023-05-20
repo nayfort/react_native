@@ -24,7 +24,7 @@ import connectToDB from '../db';
 import AlertAccess from '../utils/AlertAccess/AlertAccess';
 import defaultLanguage from '../utils/DefaultLanguage/defaultLanguage';
 import Spinner from '../components/Spinner/Spinner';
-//import AdBanner from '../components/AdMob';
+import AdBanner from '../components/AdMob';
 
   class Categories extends React.Component {
   state = {
@@ -199,7 +199,7 @@ import Spinner from '../components/Spinner/Spinner';
         </ScrollView>
         <ThumbIcon onPress={Rate} style={{ bottom: height + 15 }} />
         {/*admob banner*/}
-        {/*<AdBanner setHeight={(state) => this.setState(state)} />*/}
+        <AdBanner setHeight={(state) => this.setState(state)} />
       </>
     );
   }

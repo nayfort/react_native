@@ -22,7 +22,7 @@ import { results, search, noResult } from '../assets/staticLocalisation.json';
 import theme from '../styles/theme';
 import { goBackSafe } from '../utils/GoBackSafe/GoBackSafe';
 import Spinner from '../components/Spinner/Spinner';
-//import AdBanner from '../components/AdMob';
+import AdBanner from '../components/AdMob';
 //import { showInterstitialAd } from '../components/AdMob';
 
 class Knots extends React.PureComponent {
@@ -157,7 +157,7 @@ class Knots extends React.PureComponent {
           </Text>
         ) : null}
 
-        {/*<AdBanner />*/}
+        <AdBanner />
 
       </View>
     );

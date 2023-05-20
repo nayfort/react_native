@@ -8,7 +8,7 @@ import { LanguageCategory } from '../components/Category';
 import languages from '../assets/languages.json';
 import { goBackSafe } from '../utils/GoBackSafe/GoBackSafe';
 import theme from '../styles/theme';
-//import AdBanner from '../components/AdMob';
+import AdBanner from '../components/AdMob';
 
 const Language = React.memo(
   ({ setLanguage, langCode, navigation, isPortrait, height, width }) => (
@@ -31,7 +31,7 @@ const Language = React.memo(
         ))}
       </ScrollView>
       {/*admob banner*/}
-      {/*<AdBanner />*/}
+      <AdBanner />
     </>
   )
 );

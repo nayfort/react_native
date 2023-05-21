@@ -29,9 +29,9 @@ const Language = React.memo(
             width={width}
           />
         ))}
+          {/*admob banner*/}
+          <AdBanner />
       </ScrollView>
-      {/*admob banner*/}
-      <AdBanner />
     </>
   )
 );

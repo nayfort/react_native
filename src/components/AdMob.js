@@ -98,18 +98,109 @@
 
 
 
+//20.05
+// import { StatusBar } from 'expo-status-bar';
+// import { StyleSheet, SafeAreaView } from 'react-native';
+// import { BannerAd, BannerAdSize, TestIds, InterstitialAd, AdEventType } from 'react-native-google-mobile-ads';
+// import { useState, useEffect } from 'react';
+//
+// const interstitial = InterstitialAd.createForAdRequest(TestIds.INTERSTITIAL, {
+//     requestNonPersonalizedAdsOnly: true
+// });
+//
+// export const Banner = ({ setHeight }) => {
+//     const [interstitialLoaded, setInterstitialLoaded] = useState(false);
+//     let adStartTime, lastTimeShown = 0;
+//     const loadInterstitial = () => {
+//         const unsubscribeLoaded = interstitial.addAdEventListener(
+//             AdEventType.LOADED,
+//             () => {
+//                 setInterstitialLoaded(true);
+//             }
+//         );
+//
+//         const unsubscribeClosed = interstitial.addAdEventListener(
+//             AdEventType.CLOSED,
+//             () => {
+//                 setInterstitialLoaded(false);
+//                 interstitial.load();
+//             }
+//         );
+//
+//         interstitial.load();
+//
+//         return () => {
+//             unsubscribeClosed();
+//             unsubscribeLoaded();
+//         }
+//     }
+//
+//     useEffect(() => {
+//         const unsubscribeInterstitialEvents = loadInterstitial();
+//
+//         return () => {
+//             unsubscribeInterstitialEvents();
+//         };
+//     }, [])
+//
+//     useEffect(()=>{
+//         if (Date.now() - lastTimeShown < 0) {
+//             return;
+//         }
+//         if (interstitialLoaded) {
+//             interstitial.show()
+//         }
+//     },[interstitialLoaded])
+//
+//     return (
+//         <SafeAreaView style={styles.container}>
+//             <BannerAd
+//                 unitId={TestIds.BANNER}
+//                 size={BannerAdSize.LARGE_BANNER}
+//                 requestOptions={{
+//                     requestNonPersonalizedAdsOnly: true
+//                 }}
+//                 onAdOpened={()=>{
+//                     adStartTime = Date.now();
+//                 }}
+//                 onAdClosed={()=>{
+//                     if (Date.now() - adStartTime < 60000) {
+//                         lastTimeShown = 0;
+//                     }
+//                 }}
+//             />
+//             <StatusBar style="auto" />
+//         </SafeAreaView>
+//     );
+// }
+//
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//         backgroundColor: '#fff',
+//         alignItems: 'center',
+//         justifyContent: 'center',
+//     },
+// });
+//
+// export default Banner;
+
+
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, SafeAreaView } from 'react-native';
-import { BannerAd, BannerAdSize, TestIds, InterstitialAd, AdEventType } from 'react-native-google-mobile-ads';
+import { BannerAd, BannerAdSize, TestIds, InterstitialAd, AdEventType, RewardedInterstitialAd, RewardedAdEventType } from 'react-native-google-mobile-ads';
 import { useState, useEffect } from 'react';
 
 const interstitial = InterstitialAd.createForAdRequest(TestIds.INTERSTITIAL, {
     requestNonPersonalizedAdsOnly: true
 });
 
-export const Banner = ({ setHeight }) => {
+const Banner = () => {
     const [interstitialLoaded, setInterstitialLoaded] = useState(false);
-    let adStartTime, lastTimeShown = 0;
+    const showInterstitialIntervalInMin = 1
+    const bannerId = TestIds.BANNER
+    const bannerSize = BannerAdSize.LARGE_BANNER
+
     const loadInterstitial = () => {
         const unsubscribeLoaded = interstitial.addAdEventListener(
             AdEventType.LOADED,
@@ -142,33 +233,28 @@ export const Banner = ({ setHeight }) => {
         };
     }, [])
 
-    useEffect(()=>{
-        if (Date.now() - lastTimeShown < 0) {
-            return;
-        }
-        if (interstitialLoaded) {
-            interstitial.show()
-        }
+    useEffect( ()=>{
+        const timer = setInterval(async () => {
+            if (interstitialLoaded) {
+                await interstitial.show();
+            }
+        }, showInterstitialIntervalInMin * 60000); // Run interval
+
+        return () => {
+            clearInterval(timer);
+        };
     },[interstitialLoaded])
 
     return (
         <SafeAreaView style={styles.container}>
             <BannerAd
-                unitId={TestIds.BANNER}
-                size={BannerAdSize.LARGE_BANNER}
+                unitId={bannerId}
+                size={bannerSize}
                 requestOptions={{
                     requestNonPersonalizedAdsOnly: true
                 }}
-                onAdOpened={()=>{
-                    adStartTime = Date.now();
-                }}
-                onAdClosed={()=>{
-                    if (Date.now() - adStartTime < 60000) {
-                        lastTimeShown = 0;
-                    }
-                }}
             />
-            <StatusBar style="auto" />
+            {/*<StatusBar style="auto" />*/}
         </SafeAreaView>
     );
 }

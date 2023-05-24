@@ -196,10 +196,10 @@ import AdBanner from '../components/AdMob';
               />,
             ];
           })}
+          {/*admob banner*/}
+          <AdBanner/>
         </ScrollView>
         <ThumbIcon onPress={Rate} style={{ bottom: height + 15 }} />
-        {/*admob banner*/}
-        <AdBanner setHeight={(state) => this.setState(state)} />
       </>
     );
   }

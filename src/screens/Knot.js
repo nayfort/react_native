@@ -41,7 +41,7 @@ import {
 import { knotLike } from '../actions/knots';
 import theme from '../styles/theme';
 import { goBackSafe } from '../utils/GoBackSafe/GoBackSafe';
-//import { showInterstitialAd } from '../components/AdMob';
+import { showInterstitialAd } from '../components/AdMob';
 
 class Knot extends React.PureComponent {
   constructor(props) {
@@ -108,7 +108,7 @@ class Knot extends React.PureComponent {
   handleBackEvent = async () => {
     const { navigation } = this.props;
     goBackSafe(navigation);
-    //await showInterstitialAd();
+    showInterstitialAd();
 
     return true;
   };

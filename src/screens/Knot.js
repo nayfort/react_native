@@ -12,7 +12,7 @@ import {
   InteractionManager,
   Linking,
   Alert,
-  TouchableOpacity,
+  TouchableOpacity, StatusBar
 } from 'react-native';
 import Slider from '@react-native-community/slider';
 import { knotPropType } from './Categories';
@@ -279,6 +279,7 @@ class Knot extends React.PureComponent {
 
     return (
       <>
+        <StatusBar/>
         <View
           style={[
             styles.container,

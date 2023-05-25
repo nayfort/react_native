@@ -2,7 +2,6 @@ import React from 'react';
 import { ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
-
 import { languageSet } from '../actions/language';
 import { LanguageCategory } from '../components/Category';
 import languages from '../assets/languages.json';
@@ -30,7 +29,7 @@ const Language = React.memo(
           />
         ))}
           {/*admob banner*/}
-          <AdBanner />
+          <AdBanner/>
       </ScrollView>
     </>
   )

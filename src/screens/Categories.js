@@ -7,10 +7,9 @@ import {
   Text,
   StyleSheet,
   BackHandler,
-  Dimensions,
+  Dimensions, StatusBar,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 import { filteredKnotsSet, knotsGet } from '../actions/knots';
 import { languageGet, languageSet } from '../actions/language';
 import changeDimWidthHeight from '../actions/dimensions';
@@ -61,7 +60,7 @@ import AdBanner from '../components/AdMob';
     } = this.props;
 
     BackHandler.addEventListener('hardwareBackPress', this.exitApp);
-    Dimensions.addEventListener('change', handleOrientationChanges);
+    Dimensions.addEventListener('change', this.handleOrientationChanges);
 
     this.loadData();
     getLanguage();
@@ -72,8 +71,13 @@ import AdBanner from '../components/AdMob';
   }
 
   componentWillUnmount() {
+
+    const {
+      handleOrientationChanges
+    } = this.props;
+
     BackHandler.removeEventListener('hardwareBackPress', this.exitApp);
-    Dimensions.removeEventListener('change', handleOrientationChanges);
+    Dimensions.removeEventListener('change', this.handleOrientationChanges);
   }
 
   loadData = async () => {
@@ -154,6 +158,7 @@ import AdBanner from '../components/AdMob';
     }
     return (
       <>
+        <StatusBar/>
         <ScrollView
           style={styles.container}
           stickyHeaderIndices={[0, 3, 13]}
@@ -203,7 +208,6 @@ import AdBanner from '../components/AdMob';
       </>
     );
   }
-
 }
 
 const styles = StyleSheet.create({
@@ -286,4 +290,4 @@ const mapDispatchToProps = (dispatch) => ({
   setLanguage: (code) => dispatch(languageSet(code)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps, null)(Categories);
+export default connect(mapStateToProps, mapDispatchToProps)(Categories);

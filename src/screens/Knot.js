@@ -12,7 +12,7 @@ import {
   InteractionManager,
   Linking,
   Alert,
-  TouchableOpacity, StatusBar
+  TouchableOpacity, StatusBar,
 } from 'react-native';
 import Slider from '@react-native-community/slider';
 import { knotPropType } from './Categories';
@@ -48,7 +48,7 @@ class Knot extends React.PureComponent {
     super(props);
     const { knot } = props;
     const sprite = KnotsSprites.find(
-      ({ knotennummer }) => knotennummer === +knot.knotennummer
+        ({ knotennummer }) => knotennummer === +knot.knotennummer
     );
     const { image2d, image360 } = sprite;
 
@@ -77,9 +77,9 @@ class Knot extends React.PureComponent {
 
     navigation.setOptions({
       headerRight: () => (
-        <View style={{ marginRight: 15 }}>
-          <LikeIcon onPress={this.like} reverse={favorite} />
-        </View>
+          <View style={{ marginRight: 15 }}>
+            <LikeIcon onPress={this.like} reverse={favorite} />
+          </View>
       ),
     });
 
@@ -122,9 +122,9 @@ class Knot extends React.PureComponent {
 
     navigation.setOptions({
       headerRight: () => (
-        <View style={{ marginRight: 15 }}>
-          <LikeIcon onPress={this.like} reverse={!favorite} />
-        </View>
+          <View style={{ marginRight: 15 }}>
+            <LikeIcon onPress={this.like} reverse={!favorite} />
+          </View>
       ),
     });
 
@@ -238,7 +238,7 @@ class Knot extends React.PureComponent {
 
     const names = knot[`knotenname_${langCode}`].split('_');
     const currentTypes = types.filter(({ code }) =>
-      knot.knoten_typ.includes(code)
+        knot.knoten_typ.includes(code)
     );
 
     const RotateData = this.spinValue.interpolate({
@@ -271,169 +271,178 @@ class Knot extends React.PureComponent {
       }, [url]);
 
       return (
-        <TouchableOpacity onPress={handlePress}>
-          <Text style={[styles.infoText, { fontSize }]}>{children}</Text>
-        </TouchableOpacity>
+          <TouchableOpacity onPress={handlePress}>
+            <Text style={[styles.infoText, { fontSize }]}>{children}</Text>
+          </TouchableOpacity>
       );
     };
 
     return (
-      <>
-        <StatusBar/>
-        <View
-          style={[
-            styles.container,
-            { flexDirection: isPortrait ? 'column' : 'row' },
-          ]}
-        >
+        <>
+          <StatusBar />
           <View
-            style={[
-              {
-                flexDirection: isPortrait ? 'row' : 'row-reverse',
-                width: isPortrait ? width : width / 2,
-                alignItems: 'center',
-              },
-            ]}
-          >
-            <Animated.View
-              style={{
-                alignItems: 'center',
-                transform: [{ rotate: RotateData }, { rotateY: MirrorData }],
-                flexBasis: isPortrait ? '90%' : '80%',
-              }}
-            >
-              <Animation
-                ref={(ref) => {
-                  this.animation = ref;
-                }}
-                height={knotHeight}
-                source={is360 ? image360 : image2d}
-                columns={is360 ? +knoten_count_x_360 : +knoten_count_x_2d}
-                rows={is360 ? +knoten_count_y_360 : +knoten_count_y_2d}
-                frameHeight={+knoten_framehoehe}
-                frameWidth={+knoten_frameweite}
-                onEndAnimation={this.onEndAnimation}
-                onSwipe={this.onSwipe}
-                loop={is360}
-                frameCount={is360 ? +knoten_frame_360 : +knoten_frame_2d}
-              />
-            </Animated.View>
-            <Slider
               style={[
-                styles.slider,
-                {
-                  width: width,
-                  marginLeft: isPortrait ? -knotHeight / 2.2 : 0,
-                  marginRight: !isPortrait ? -knotHeight / 2.3 : 0,
-                },
+                styles.container,
+                { flexDirection: 'column' },
               ]}
-              minimumValue={1}
-              maximumValue={100}
-              step={1}
-              value={50}
-              minimumTrackTintColor="#009688"
-              maximumTrackTintColor="#009688"
-              thumbTintColor="#00b8d4"
-              onValueChange={this.changeSpeed}
-              onSlidingComplete={OnSlidingComplete}
-              onResponderStart={OnResponderStart}
-            />
-          </View>
-          {showSpeed && <Text style={styles.speed}>Speed: {speed}</Text>}
-
-          <ScrollView style={styles.description}>
-            <Text style={[styles.infoText, { fontSize }]}>
-              <Text style={[styles.infoTitle, { fontSize }]}>
-                {description[`name_${langCode}`]}:{' '}
-              </Text>
-              {knot[`knotenbeschreibung_${langCode}`]}
-            </Text>
-            {knoten_abok !== null && (
-              <Text style={[styles.infoTitle, { fontSize }]}>
-                ABOK:{' '}
-                <Text style={[styles.infoText, { fontSize }]}>
-                  {knoten_abok}
-                </Text>
-              </Text>
-            )}
-            {knotenwarnung_de ? (
-              <>
-                <Text style={[styles.attention, { fontSize }]}>
-                  {attention[`name_${langCode}`]}!
-                </Text>
-                <Text style={[styles.attentionText, { fontSize }]}>
-                  {attentionText[`name_${langCode}`]}
-                </Text>
-              </>
-            ) : null}
-            <Text style={[styles.infoTitle, { fontSize }]}>
-              {alias[`name_${langCode}`]}:{' '}
-            </Text>
-            {names.map((nm) => (
-              <Text
-                style={[styles.infoText, { paddingLeft: 10, fontSize }]}
-                key={nm}
+          >
+            <View
+                style={[
+                  {
+                    flexDirection: 'row',
+                    width: width,
+                    alignItems: 'center',
+                  },
+                ]}
+            >
+              <Animated.View
+                  style={{
+                    alignItems: 'center',
+                    transform: [{ rotate: RotateData }, { rotateY: MirrorData }],
+                    flexBasis: isPortrait ? '90%' : '80%',
+                  }}
               >
-                {' '}
-                - {nm}
-              </Text>
-            ))}
-            <Text style={[styles.infoTitle, { fontSize }]}>
-              {strength[`name_${langCode}`]}:{' '}
+                <Animation
+                    ref={(ref) => {
+                      this.animation = ref;
+                    }}
+                    height={knotHeight}
+                    source={is360 ? image360 : image2d}
+                    columns={is360 ? +knoten_count_x_360 : +knoten_count_x_2d}
+                    rows={is360 ? +knoten_count_y_360 : +knoten_count_y_2d}
+                    frameHeight={+knoten_framehoehe}
+                    frameWidth={+knoten_frameweite}
+                    onEndAnimation={this.onEndAnimation}
+                    onSwipe={this.onSwipe}
+                    loop={is360}
+                    frameCount={is360 ? +knoten_frame_360 : +knoten_frame_2d}
+                />
+              </Animated.View>
+
+            </View>
+            <View
+                style={[
+                  {
+                    marginLeft: 10,
+                    marginTop: 20,
+                  },
+                ]}
+            >
+              <Slider
+                  style={[
+                    styles.slider,
+                    {
+                      width: width * 0.9,
+                    },
+                  ]}
+                  i
+                  minimumValue={1}
+                  maximumValue={100}
+                  step={1}
+                  value={50}
+                  minimumTrackTintColor="#009688"
+                  maximumTrackTintColor="#009688"
+                  thumbTintColor="#00b8d4"
+                  onValueChange={this.changeSpeed}
+                  onSlidingComplete={OnSlidingComplete}
+                  onResponderStart={OnResponderStart}
+              />
+            </View>
+            {showSpeed && <Text style={styles.speed}>Speed: {speed}</Text>}
+
+            <ScrollView style={styles.description}>
               <Text style={[styles.infoText, { fontSize }]}>
-                {knot.knotenfestigkeit}
-              </Text>
-            </Text>
-            <Text style={[styles.infoTitle, { fontSize }]}>
-              {currentTypes[0][`type_${langCode}`]}:{' '}
-            </Text>
-            <View style={{ marginBottom: 15 }}>
-              {currentTypes.map((nm) => (
-                <Text
-                  style={[styles.infoText, { paddingLeft: 10, fontSize }]}
-                  key={nm[`name_${langCode}`]}
-                >
-                  - {nm[`name_${langCode}`]}
+                <Text style={[styles.infoTitle, { fontSize }]}>
+                  {description[`name_${langCode}`]}:{' '}
                 </Text>
-              ))}
-            </View>
-            <View>
-              <Text style={[styles.infoText, { fontSize }]}>
-                Used content provided by API. Original source -
+                {knot[`knotenbeschreibung_${langCode}`]}
               </Text>
-              <OpenURLButton url={'https://knots.exyte.top/'}>
-                https://knots.exyte.top/
-              </OpenURLButton>
-            </View>
-          </ScrollView>
-        </View>
-        <View style={styles.footer}>
-          {mirrored ? (
-            <MirrorRightIcon onPress={this.mirrorImage} />
-          ) : (
-            <MirrorLeftIcon onPress={this.mirrorImage} />
-          )}
+              {knoten_abok !== null && (
+                  <Text style={[styles.infoTitle, { fontSize }]}>
+                    ABOK:{' '}
+                    <Text style={[styles.infoText, { fontSize }]}>
+                      {knoten_abok}
+                    </Text>
+                  </Text>
+              )}
+              {knotenwarnung_de ? (
+                  <>
+                    <Text style={[styles.attention, { fontSize }]}>
+                      {attention[`name_${langCode}`]}!
+                    </Text>
+                    <Text style={[styles.attentionText, { fontSize }]}>
+                      {attentionText[`name_${langCode}`]}
+                    </Text>
+                  </>
+              ) : null}
+              <Text style={[styles.infoTitle, { fontSize }]}>
+                {alias[`name_${langCode}`]}:{' '}
+              </Text>
+              {names.map((nm) => (
+                  <Text
+                      style={[styles.infoText, { paddingLeft: 10, fontSize }]}
+                      key={nm}
+                  >
+                    {' '}
+                    - {nm}
+                  </Text>
+              ))}
+              <Text style={[styles.infoTitle, { fontSize }]}>
+                {strength[`name_${langCode}`]}:{' '}
+                <Text style={[styles.infoText, { fontSize }]}>
+                  {knot.knotenfestigkeit}
+                </Text>
+              </Text>
+              <Text style={[styles.infoTitle, { fontSize }]}>
+                {currentTypes[0][`type_${langCode}`]}:{' '}
+              </Text>
+              <View style={{ marginBottom: 15 }}>
+                {currentTypes.map((nm) => (
+                    <Text
+                        style={[styles.infoText, { paddingLeft: 10, fontSize }]}
+                        key={nm[`name_${langCode}`]}
+                    >
+                      - {nm[`name_${langCode}`]}
+                    </Text>
+                ))}
+              </View>
+              <View>
+                <Text style={[styles.infoText, { fontSize }]}>
+                  Used content provided by API. Original source -
+                </Text>
+                <OpenURLButton url={'https://knots.exyte.top/'}>
+                  https://knots.exyte.top/
+                </OpenURLButton>
+              </View>
+            </ScrollView>
+          </View>
+          <View style={styles.footer}>
+            {mirrored ? (
+                <MirrorRightIcon onPress={this.mirrorImage} />
+            ) : (
+                <MirrorLeftIcon onPress={this.mirrorImage} />
+            )}
 
-          {rotated ? (
-            <ReRotateIcon onPress={this.rotateImage} />
-          ) : (
-            <RotateIcon onPress={this.rotateImage} />
-          )}
+            {rotated ? (
+                <ReRotateIcon onPress={this.rotateImage} />
+            ) : (
+                <RotateIcon onPress={this.rotateImage} />
+            )}
 
-          {isFinished ? (
-            <RepeatIcon onPress={this.playAnimation} />
-          ) : paused && !isFinished ? (
-            <PlayIcon onPress={this.playAnimation} />
-          ) : (
-            <PauseIcon onPress={this.pauseAnimation} />
-          )}
-          {is360 ? (
-            <KnotIcon onPress={this.changeView} />
-          ) : (
-            <Icon360 onPress={this.changeView} />
-          )}
-        </View>
-      </>
+            {isFinished ? (
+                <RepeatIcon onPress={this.playAnimation} />
+            ) : paused && !isFinished ? (
+                <PlayIcon onPress={this.playAnimation} />
+            ) : (
+                <PauseIcon onPress={this.pauseAnimation} />
+            )}
+            {is360 ? (
+                <KnotIcon onPress={this.changeView} />
+            ) : (
+                <Icon360 onPress={this.changeView} />
+            )}
+          </View>
+        </>
     );
   }
 }
@@ -466,8 +475,8 @@ const styles = StyleSheet.create({
     color: theme.knotAttentionText,
   },
   slider: {
-    height: 30,
-    transform: [{ rotate: '-90deg' }],
+    marginRight: 25,
+    // transform: [{ rotate: '-90deg' }],
   },
   footer: {
     ...theme.knotFooter,
@@ -506,10 +515,10 @@ Knot.propTypes = {
 };
 
 const mapStateToProps = ({
-  knots: { knot },
-  language: { langCode },
-  dimensions: { isPortrait, height, width },
-}) => ({
+                           knots: { knot },
+                           language: { langCode },
+                           dimensions: { isPortrait, height, width },
+                         }) => ({
   knot,
   langCode,
   isPortrait,

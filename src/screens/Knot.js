@@ -410,8 +410,8 @@ class Knot extends React.PureComponent {
                 <Text style={[styles.infoText, { fontSize }]}>
                   Used content provided by API. Original source -
                 </Text>
-                <OpenURLButton url={'https://knots.exyte.top/'}>
-                  https://knots.exyte.top/
+                <OpenURLButton url={'https://knots.llill.xyz/'}>
+                  https://knots.llill.xyz/
                 </OpenURLButton>
               </View>
             </ScrollView>

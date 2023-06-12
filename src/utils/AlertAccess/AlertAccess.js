@@ -14,7 +14,7 @@ const saveData = async () => {
 /*Function for get user accessed use knots API*/
 const AlertAccess = (exitApp, langCode) =>
   Alert.alert(
-    'Used content provided by API. original source - https://knots.exyte.top/',
+    'Used content provided by API. original source - https://knots.llill.xyz/',
     '',
     [
       {

@@ -4,19 +4,19 @@ import * as FileSystem from 'expo-file-system';
 
 const connectToDB = async () => {
   const { exists, isDirectory } = await FileSystem.getInfoAsync(
-    `${FileSystem.documentDirectory}SQLite`
+      `${FileSystem.documentDirectory}SQLite`
   );
 
   if (!exists) {
     await FileSystem.makeDirectoryAsync(
-      `${FileSystem.documentDirectory}SQLite`
+        `${FileSystem.documentDirectory}SQLite`
     );
   } else if (!isDirectory) {
     throw new Error('SQLite dir is not a directory');
   }
   await FileSystem.downloadAsync(
-    Asset.fromModule(require('./assets/mclangknoten.db')).uri,
-    `${FileSystem.documentDirectory}/SQLite/mclangknoten.db`
+      Asset.fromModule(require('./assets/mclangknoten.db')).uri,
+      `${FileSystem.documentDirectory}/SQLite/mclangknoten.db`
   );
 };
 
@@ -28,12 +28,12 @@ export const executeSql = async (query, params = []) => {
 
   return new Promise((resolve, reject) => {
     db.transaction(
-      (tx) => {
-        tx.executeSql(query, params, (_, { rows: { _array } }) =>
-          resolve(_array)
-        );
-      },
-      (err) => reject(err)
+        (tx) => {
+          tx.executeSql(quey, params, (_, { rows: { _array } }) =>
+              resolve(_array)
+          );
+        },
+        (err) => reject(err)
     );
   });
 };
